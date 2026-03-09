@@ -12,6 +12,10 @@ int largestInArray(int arr[], int n)
             secondLargest = largest;
             largest = arr[i];
         }
+        else if (arr[i] > secondLargest && arr[i] != largest)
+        {
+            secondLargest = arr[i];
+        }
     }
     cout << "2nd Largest Element : " << secondLargest << endl;
     return secondLargest;
@@ -21,8 +25,7 @@ int main()
 {
     int n = 5;
     // int arr[] = {1, 2, 3, 4, 5};
-    int arr[] = {8, 10, 5, 12, 9};
-
+    int arr[] = {8, 10, 12, 9, 11}; // Edge case
     largestInArray(arr, n);
 
     return 0;
