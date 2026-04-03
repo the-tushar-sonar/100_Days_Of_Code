@@ -4,6 +4,7 @@
 using namespace std;
 
 // Brute force
+/*
 int findUnique(int arr[], int n)
 {
     vector<int> temp;
@@ -19,12 +20,41 @@ int findUnique(int arr[], int n)
 
     for (int i = 0; i < temp.size(); i++)
     {
-        cout << temp[i] << " ";
+        arr[i] = temp[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
     }
 
     cout << endl;
 
     return temp.size();
+}
+    */
+
+// 2 Pointer
+int findUnique(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+
+            if (arr[i] != arr[j] && arr[i] < arr[j])
+            {
+                arr[i + 1] = arr[j];
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
 }
 
 int main()
