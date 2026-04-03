@@ -34,27 +34,46 @@ int findUnique(int arr[], int n)
     */
 
 // 2 Pointer
+// int findUnique(int arr[], int n)
+// {
+//     for (int i = 0; i < n - 1; i++)
+//     {
+//         for (int j = i + 1; j < n; j++)
+//         {
+
+//             if (arr[i] != arr[j] && arr[i] < arr[j])
+//             {
+//                 arr[i + 1] = arr[j];
+//                 break;
+//             }
+//         }
+//     }
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+
+//     return 0;
+// }
+
 int findUnique(int arr[], int n)
 {
-    for (int i = 0; i < n - 1; i++)
-    {
-        for (int j = i + 1; j < n; j++)
-        {
+    if (n == 0)
+        return 0;
 
-            if (arr[i] != arr[j] && arr[i] < arr[j])
-            {
-                arr[i + 1] = arr[j];
-                break;
-            }
+    int i = 0;
+
+    for (int j = 1; j < n; j++)
+    {
+        if (arr[i] != arr[j])
+        {
+            i++;
+            arr[i] = arr[j];
         }
     }
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
 
-    return 0;
+    return i + 1;
 }
 
 int main()
@@ -64,6 +83,12 @@ int main()
     int n = sizeof(arr) / sizeof(arr[0]);
 
     int k = findUnique(arr, n);
+
+    for (int i = 0; i < k; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
     cout << k << endl;
 
     return 0;
