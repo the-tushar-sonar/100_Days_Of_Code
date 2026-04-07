@@ -33,30 +33,55 @@ int findUnique(int arr[], int n)
 }
     */
 
-// 2 Pointer
-// int findUnique(int arr[], int n)
-// {
-//     for (int i = 0; i < n - 1; i++)
-//     {
-//         for (int j = i + 1; j < n; j++)
-//         {
+// Using Set [Brute Force]
+/*
+int removeDuplicates(int arr[], int n)
+{
+    set<int> s;
 
-//             if (arr[i] != arr[j] && arr[i] < arr[j])
-//             {
-//                 arr[i + 1] = arr[j];
-//                 break;
-//             }
-//         }
-//     }
-//     for (int i = 0; i < n; i++)
-//     {
-//         cout << arr[i] << " ";
-//     }
-//     cout << endl;
+    for (int i = 0; i < n; i++)
+    {
+        s.insert(arr[i]);
+    }
 
-//     return 0;
-// }
+    int k = s.size();
 
+    int index = 0;
+    for (auto it : s)
+    {
+        arr[index++] = it;
+    }
+
+    return k;
+}
+*/
+// 2 Pointer [Working but Not Proper implementation of 2 Pointer]
+/*
+int findUnique(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+
+            if (arr[i] != arr[j] && arr[i] < arr[j])
+            {
+                arr[i + 1] = arr[j];
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+*/
+
+// 2 Pointer [Optimal code]
 int findUnique(int arr[], int n)
 {
     if (n == 0)
