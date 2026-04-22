@@ -1,11 +1,37 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void moveZeros(int arr[], int n)
+// Brute Force ==> Time Complexity: O(n)    Space Complexity: O(n)
+vector<int> moveZerosBrute(vector<int> &arr)
 {
+    vector<int> result;
 
-    int i = 0;
-    for (int j = 0; j < n; j++)
+    // add non-zeros
+    for (int x : arr)
+    {
+        if (x != 0)
+        {
+            result.push_back(x);
+        }
+    }
+
+    // add zeros
+    int zeroCount = arr.size() - result.size();
+    while (zeroCount--)
+    {
+        result.push_back(0);
+    }
+
+    return result;
+}
+
+// 2 pointer ==> Time Complexity: O(n)    Space Complexity: O(1)
+void moveZeros(vector<int> &arr)
+{
+    int i = 0; // position for next non-zero
+
+    for (int j = 0; j < arr.size(); j++)
     {
         if (arr[j] != 0)
         {
@@ -17,14 +43,16 @@ void moveZeros(int arr[], int n)
 
 int main()
 {
-    int arr[] = {1, 0, 2, 3, 0, 4, 0, 1};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    vector<int> arr = {0, 1, 0, 3, 12};
 
-    moveZeros(arr, n);
-    for (int i = 0; i < n; i++)
+    moveZeros(arr);
+
+    // for (int x : moveZerosBrute(arr))
+    for (int x : arr)
     {
-        cout << arr[i] << " ";
+        cout << x << " ";
     }
+
     cout << endl;
 
     return 0;
