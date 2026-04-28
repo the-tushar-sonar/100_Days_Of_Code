@@ -2,10 +2,12 @@
 #include <vector>
 using namespace std;
 
-int MissingNum(vector<int> nums)
+int MissingNum(const vector<int> &nums)
 {
     int n = nums.size() + 1;
-    int sumN = (n * (n + 1)) / 2;
+    // int sumN = (n * (n + 1)) / 2;
+    long long sumN = (1LL * n * (n + 1)) / 2; // Edge Case: Integer Overflow
+
     int sumA = 0;
     for (int x : nums)
     {
